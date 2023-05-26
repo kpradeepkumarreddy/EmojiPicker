@@ -17,7 +17,7 @@ qt_add_executable(appEmojiSelector
 qt_add_qml_module(appEmojiSelector
     URI EmojiSelector
     VERSION 1.0
-    QML_FILES Main.qml EmojiPicker.qml Request.js
+    QML_FILES Main.qml EmojiPicker.qml Request.js EmojiData.json
 )
 
 set_target_properties(appEmojiSelector PROPERTIES

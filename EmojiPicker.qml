@@ -110,21 +110,9 @@ Column{
     }
 
     Component.onCompleted: {
-        const cacheResp = cacheHandler.read()
-        if(cacheResp === "") {
-            XHR.sendRequest("http://127.0.0.1:8080/EmojiData.json", (resp)=>{
-                                cacheHandler.write(JSON.stringify(resp))
-                                emojiCategoriesRepeater.emojiCategories = resp.categories
-                                listView.emojiModel = resp.emojis
-                            })
-        } else {
-            console.log("loading from cache")
-            const cacheObj = JSON.parse(cacheResp)
-            emojiCategoriesRepeater.emojiCategories = cacheObj.categories
-            listView.emojiModel = cacheObj.emojis
-        }
-    }
-    CacheHandler{
-        id:cacheHandler
+        XHR.sendRequest("EmojiData.json", (resp)=>{
+                            emojiCategoriesRepeater.emojiCategories = resp.categories
+                            listView.emojiModel = resp.emojis
+                        })
     }
 }

@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     const QUrl url(u"qrc:/EmojiSelector/Main.qml"_qs);
 
     qmlRegisterType<CacheHandler>("CacheHandler", 1, 0, "CacheHandler");
+    qputenv("QML_XHR_ALLOW_FILE_READ", QByteArray("1"));
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
         &app, []() { QCoreApplication::exit(-1); },
